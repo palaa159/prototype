@@ -1,0 +1,30 @@
+var app = {
+	sW: window.innerWidth,
+	sH: window.innerHeight,
+	cBg: $('#canvas-0'),
+	cBg0: $('#canvas-0')[0],
+	canvasFs: function() {
+		app.cBg.attr({
+			width: app.sW,
+			height: app.sH
+		});
+	},
+	setScreen: function() {
+		console.log('screen changed');
+		app.sW = window.innerWidth;
+		app.sH = window.innerHeight;
+		app.canvasFs();
+		app.bgDraw(app.sW, app.sH);
+	},
+	bgDraw: function(w, h) {
+		ctx = app.cBg0.getContext('2d');
+		ctx.fillStyle = "green";
+        ctx.fillRect(0,0,w,h);
+	}
+};
+
+window.addEventListener('resize', function() {
+	app.setScreen();
+}, false);
+
+window.addEventListener('load', app.setScreen(), false);

@@ -1,0 +1,35 @@
+
+{
+	"name": "dataf10w",
+	"version": "0.0.1",
+	"manifest_version": 2,
+	"browser_action": {
+		"default_title": "dataf10w",
+		"default_popup": "popup.html"
+	},
+	"permissions": [ // calling for permissions http://developer.chrome.com/extensions/tabs.html
+		"history",
+		"tabs",
+		"http://*/*",
+		"https://*/*"
+	],
+	"background": { // background process
+		"scripts": ["background.js"],
+		"persistent": true // if true then active all the time
+	},
+	"content_scripts": [
+		{
+			"matches": ["http://*/*", "https://*/*"],
+			"js": ["content.js"]
+		}
+	],
+	"browser_action": {
+	    "default_icon": {
+	        "19": "icons/19x19.png",
+	        "38": "icons/38x38.png"
+	    },
+	    "default_title": "Tooltip for dataf10w",
+	    "default_popup": "browseraction/popup.html"
+		},
+	"icons": { "16": "icons/16x16.png", "48": "icons/48x48.png", "128": "icons/128x128.png" }
+}
